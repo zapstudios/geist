@@ -1,34 +1,27 @@
-import {ApiOptions, ApiResponse} from './typing';
+import { ApiClientSettings, IApiService } from "./globalTypes";
+
+const ExampleApiService: IApiService = {
+    type: 'rest',
+    filepath: 'rest/rest.ts'
+}
 
 /**
- * Basic request function
- * @TODO: implement & test with real use case
+ * Sets runtime variables & "constructs" the universal api client
+ * 
  * @param options
  */
-const request: (options: ApiOptions) => Promise<ApiResponse> = async (options: ApiOptions): Promise<ApiResponse> => {
-    let url = process.env.REACT_APP_API_BASE_URL + options.endpoint;
-    try {
-        const response = await fetch(url, {
-            method: options.type.designation,
-            mode: options.mode,
-            cache: options.cache,
-            redirect: options.redirect,
-            referrerPolicy: options.referrer,
-        });
-
-        return await response.json();
-    } catch (e) {
-        return new Promise((e) => {
-            return {
-                message: e.toString() ?? 'Unknown Error'
-            }
-        });
-    }
+const construct: (options: ApiClientSettings) => IApiService = (options: ApiClientSettings): IApiService => {
+    return ExampleApiService;
 }
 
 
-const Client = {
-   request
+/**
+ * Universal api client
+ * 
+ * @version 0.1
+ */
+const GeistClient = {
+   construct,
 };
 
-export default Client;
+export default GeistClient;

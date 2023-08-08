@@ -1,8 +1,6 @@
-export type ApiServiceType = {
-    designation: string,
-}
+import { ApiServiceType } from "../globalTypes";
 
-export interface ApiMessage {
+export type ApiMessage = {
     message: string,
     code: number,
     type: ApiServiceType

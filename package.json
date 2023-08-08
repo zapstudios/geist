@@ -1,0 +1,22 @@
+{
+  "name": "geist",
+  "version": "1.0.0",
+  "description": "geist is a typescript based api client & service, featuring XMLRPC/SOAP/WSDL/REST/GraphQL ⚡",
+  "main": "geist.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zapstudios/geist.git"
+  },
+  "author": "\"Johannes Dietze\"",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zapstudios/geist/issues"
+  },
+  "homepage": "https://github.com/zapstudios/geist#readme",
+  "devDependencies": {
+    "@types/node": "^20.4.8"
+  }
+}
