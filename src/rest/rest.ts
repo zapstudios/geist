@@ -27,6 +27,6 @@ const request: (options: ApiOptions) => Promise<ApiResponse> = async (options: A
 }
 
 
-const GeistRestClient = {
+export const GeistRestClient: { request: (options: ApiOptions) => Promise<ApiResponse> } = {
     request
 }

@@ -1,8 +1,12 @@
 // todo: add own typings for soap client
 import {ApiOptions, ApiMessage, ApiResponse} from '../rest/typing';
-import {xmlToJson} from "./xmlMapper";
+import {GeistXMLMapper} from "./xmlmapper";
 
-const sendSoapRequest = async (apiOptions: ApiOptions): Promise<ApiResponse<ApiMessage>> => {
+/**
+ * soap request function
+ * @param apiOptions
+ */
+const soap = async (apiOptions: ApiOptions): Promise<ApiResponse<ApiMessage>> => {
     try {
         const {endpoint, body} = apiOptions;
 
@@ -22,12 +26,15 @@ const sendSoapRequest = async (apiOptions: ApiOptions): Promise<ApiResponse<ApiM
         });
 
 
-        return xmlToJson(await response.text());
+        return GeistXMLMapper.xmlToJson(await response.text());
     } catch (error) {
         throw new Error('SOAP request failed');
     }
 };
 
-const GeistSoapClient = {
-    sendSoapRequest
+/**
+ * default soap client
+ */
+export const GeistSoapClient: { soap: (apiOptions: ApiOptions) => Promise<ApiResponse<ApiMessage>> } = {
+    soap
 }
